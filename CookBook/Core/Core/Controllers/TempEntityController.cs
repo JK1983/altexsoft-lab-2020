@@ -16,7 +16,7 @@ namespace Core.Controllers
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
-
+/*
         public async Task<TempEntity> AddNewTempEntity()
         {
             var lastId = (await _unitOfWork.Repository.ListAsync<TempEntity>()).Max(x => x.Id);
@@ -28,5 +28,6 @@ namespace Core.Controllers
                 Id = nextId
             });
         }
+        */
     }
 }

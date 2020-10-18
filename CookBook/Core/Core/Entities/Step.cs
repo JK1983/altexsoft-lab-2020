@@ -8,11 +8,9 @@ namespace Core.Entities
 {
     public class Step : BaseEntity
     {
-        [Required]
         public int RecipeId { get; set; }
-        [Required]
+        public Recipe Recipe { get; set; } //I don't need it
         public int OrderNum { get; set; }
-        [MaxLength(512)]
         public string Description { get; set; }
     }
 }

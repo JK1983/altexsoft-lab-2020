@@ -6,10 +6,11 @@ using System.Text;
 
 namespace Core.Entities
 {
-    public class Ingidient : BaseEntity
+    public class Ingridient : BaseEntity
     {
-        [MaxLength(128)]
         public int Name { get; set; }
-        public List<Recipe> Recipes { get; set; }
+        public string Description { get; set; }
+        public List<IngridientRecipe> IngidientRecipe { get; set; } = new List<IngridientRecipe>(); //I don't need it 
     }
 }
+

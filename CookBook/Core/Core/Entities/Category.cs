@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Core.Entities
 {
 	public class Category : BaseEntity
 	{
-		[Required]
+		public int ParentCategoryId { get; set; }		
 		public Category ParentCategory { get; set; }
-		[Required, MaxLength(128)]
 		public string Title { get; set; }
-		[MaxLength(512)]
 		public string Description { get; set; }
+		public List<Category> ChildCategories { get; set; }
+		public List<Recipe> Recipes { get; set; } //I don't need it
 	}
 }

@@ -8,13 +8,11 @@ namespace Core.Entities
 {
     public class Recipe : BaseEntity
     {
-        [Required, MaxLength(128)]
         public string Title { get; set; }
-        [Required]
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
-        [MaxLength(512)]
         public string Description { get; set; }
-        public List<Ingidient> Ingidients { get; set; } = new List<Ingidient>();
+        public List<IngridientRecipe> IngidientRecipe { get; set; } = new List<IngridientRecipe>(); //I'd like to have List<Ingridient> here
         public List<Step> Steps { get; set; } = new List<Step>();
     }
 }
