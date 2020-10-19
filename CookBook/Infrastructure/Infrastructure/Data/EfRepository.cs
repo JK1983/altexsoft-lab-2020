@@ -9,16 +9,6 @@ namespace Infrastructure.Data
 {
     public class EfRepository : IRepository
     {
-        public Task<T> AddAsync<T>(T entity) where T : BaseEntity
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAsync<T>(T entity) where T : BaseEntity
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<T> GetByIdAsync<T>(int id) where T : BaseEntity
         {
             throw new NotImplementedException();
@@ -29,7 +19,19 @@ namespace Infrastructure.Data
             throw new NotImplementedException();
         }
 
+
+
+        public Task<T> AddAsync<T>(T entity) where T : BaseEntity
+        {
+            throw new NotImplementedException();
+        }
+
         public Task UpdateAsync<T>(T entity) where T : BaseEntity
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync<T>(T entity) where T : BaseEntity
         {
             throw new NotImplementedException();
         }
