@@ -4,36 +4,45 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Data
 {
     public class EfRepository : IRepository
     {
-        public Task<T> GetByIdAsync<T>(int id) where T : BaseEntity
+        protected readonly AppDbContext DbContext;
+
+        public EfRepository(AppDbContext context)
         {
-            throw new NotImplementedException();
+            DbContext = context;
+        }
+        public async Task<T> GetByIdAsync<T>(int id) where T : BaseEntity
+        {
+            return await DbContext.Set<T>().FindAsync(id);
         }
 
-        public Task<List<T>> ListAsync<T>() where T : BaseEntity
+        public async Task<List<T>> ListAsync<T>(Expression<Func<T, bool>> predicate) where T : BaseEntity
         {
-            throw new NotImplementedException();
+            return await DbContext.Set<T>().Where(predicate).ToListAsync<T>();
         }
 
-
-
-        public Task<T> AddAsync<T>(T entity) where T : BaseEntity
+        public async Task<T> AddAsync<T>(T entity) where T : BaseEntity
         {
-            throw new NotImplementedException();
+            await DbContext.AddAsync(entity);
+            return entity;
         }
 
-        public Task UpdateAsync<T>(T entity) where T : BaseEntity
+        public async Task UpdateAsync<T>(T entity) where T : BaseEntity
         {
-            throw new NotImplementedException();
+            await DbContext.AddAsync(entity);
         }
 
-        public Task DeleteAsync<T>(T entity) where T : BaseEntity
+        public async Task DeleteAsync<T>(T entity) where T : BaseEntity
         {
-            throw new NotImplementedException();
+            DbContext.Remove(entity);
+            await DbContext.SaveChangesAsync();
         }
     }
 }

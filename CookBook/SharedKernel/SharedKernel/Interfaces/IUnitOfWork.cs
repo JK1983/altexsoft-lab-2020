@@ -8,7 +8,6 @@ namespace SharedKernel.Interfaces
     public interface IUnitOfWork
     {
         IRepository Repository { get; }
-
         Task SaveChangesAsync();
     }
 }
